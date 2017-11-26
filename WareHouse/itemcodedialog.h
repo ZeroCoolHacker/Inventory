@@ -33,6 +33,7 @@ private:
     //helper
     bool validateForm();
     bool addItem();
+    void resetForm();
 private slots:
     void on_add_pushButton_clicked();
 

@@ -51,7 +51,8 @@ bool ItemCodeDialog::validateForm()
 
     if (ui->itemcode_spinBox->text().isEmpty()
             || ui->itemdescription_plainTextEdit->toPlainText().isEmpty()
-            || ui->unit_comboBox->currentText().isEmpty())
+            || ui->unit_comboBox->currentText().isEmpty() ||
+            ui->stock_doubleSpinBox->text().isEmpty())
         return false;
     return true;
 }
@@ -64,25 +65,30 @@ bool ItemCodeDialog::addItem()
 
 
     //validate form
-    if(!validateForm())
+    if(!validateForm()){
         QMessageBox::warning(this,"Fill Form", "Please Fill the form completely.");
+        return false;
+    }
 
     //gather arguments
     qint64  item_code    = ui->itemcode_spinBox->value();
     QString description  = ui->itemdescription_plainTextEdit->toPlainText();
+    qreal   stock        = ui->stock_doubleSpinBox->value();
     qint8   unit         = ui->unit_comboBox->currentIndex()+1; // id start from 1 but index from 0
 
     //prepare the query
     QSqlQuery q(*db);
-    q.prepare("insert into items (item_code, item_description, unit) values "
-              "(:item_code, :description, :unit);");
+    q.prepare("insert into items (item_code, item_description, quantity, unit) values "
+              "(:item_code, :description, :quantity, :unit);");
     q.bindValue(":item_code", item_code);
     q.bindValue(":description", description);
+    q.bindValue(":quantity", stock);
     q.bindValue(":unit", unit);
 
     //execute the query
     if(!q.exec()){
-        QMessageBox::critical(this, "Error", q.lastError().text());
+        QMessageBox::critical(this, "Error", q.lastError().text()
+                              + "\n" + q.lastQuery());
         return false;
     }
     return true;
@@ -94,6 +100,8 @@ void ItemCodeDialog::resetForm()
 
     ui->itemcode_spinBox->clear();
     ui->itemdescription_plainTextEdit->clear();
+    ui->stock_doubleSpinBox->clear();
+    ui->itemcode_spinBox->setFocus();//focus on it
 }
 
 ItemCodeDialog::~ItemCodeDialog()
