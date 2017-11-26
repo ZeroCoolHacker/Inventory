@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>400</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDATA_ENTRY">
+    <property name="title">
+     <string>DATA ENTRY</string>
+    </property>
+    <addaction name="actionItem_Code"/>
+    <addaction name="actionVendor_Code"/>
+    <addaction name="actionSale_Invoice"/>
+    <addaction name="actionPurchase"/>
+   </widget>
+   <widget class="QMenu" name="menuREPORTS">
+    <property name="title">
+     <string>REPORTS</string>
+    </property>
+    <widget class="QMenu" name="menuSales">
+     <property name="title">
+      <string>Sales</string>
+     </property>
+     <addaction name="actionVendor_Wise"/>
+     <addaction name="actionItem_Wise"/>
+    </widget>
+    <widget class="QMenu" name="menuPurchase">
+     <property name="title">
+      <string>Purchase</string>
+     </property>
+     <addaction name="actionDate_Wise"/>
+     <addaction name="actionVendor_Wise_2"/>
+     <addaction name="actionItem_Wise_2"/>
+    </widget>
+    <addaction name="menuSales"/>
+    <addaction name="menuPurchase"/>
+   </widget>
+   <addaction name="menuDATA_ENTRY"/>
+   <addaction name="menuREPORTS"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionItem_Code">
+   <property name="text">
+    <string>Item Code</string>
+   </property>
+  </action>
+  <action name="actionVendor_Code">
+   <property name="text">
+    <string>Vendor Code</string>
+   </property>
+  </action>
+  <action name="actionSale_Invoice">
+   <property name="text">
+    <string>Sale Invoice</string>
+   </property>
+  </action>
+  <action name="actionPurchase">
+   <property name="text">
+    <string>Purchase</string>
+   </property>
+  </action>
+  <action name="actionVendor_Wise">
+   <property name="text">
+    <string>Vendor Wise</string>
+   </property>
+  </action>
+  <action name="actionItem_Wise">
+   <property name="text">
+    <string>Item Wise</string>
+   </property>
+  </action>
+  <action name="actionDate_Wise">
+   <property name="text">
+    <string>Date Wise</string>
+   </property>
+  </action>
+  <action name="actionVendor_Wise_2">
+   <property name="text">
+    <string>Vendor Wise</string>
+   </property>
+  </action>
+  <action name="actionItem_Wise_2">
+   <property name="text">
+    <string>Item Wise</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
