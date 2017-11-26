@@ -5,7 +5,9 @@
 #include <QStringListModel>
 #include <QSqlQuery>
 #include <QSqlError>
-
+#include <QSqlDatabase>
+#include <QMessageBox>
+#include <QSqlQueryModel>
 namespace Ui {
 class ItemCodeDialog;
 }
@@ -15,7 +17,7 @@ class ItemCodeDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ItemCodeDialog(QWidget *parent = 0);
+    explicit ItemCodeDialog(QSqlDatabase* database, QWidget *parent = 0);
     void initializeModels();
     void setupModels();
     void setupUnitsComboBoxModel();
@@ -23,7 +25,8 @@ public:
 
 private:
     Ui::ItemCodeDialog *ui;
-    QStringListModel *unitsComboBoxModel;
+    QSqlDatabase* db;
+    QSqlQueryModel *unitsComboBoxModel;
 };
 
 #endif // ITEMCODEDIALOG_H
