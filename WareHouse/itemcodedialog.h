@@ -8,6 +8,8 @@
 #include <QSqlDatabase>
 #include <QMessageBox>
 #include <QSqlQueryModel>
+#include <QString>
+
 namespace Ui {
 class ItemCodeDialog;
 }
@@ -18,10 +20,21 @@ class ItemCodeDialog : public QDialog
 
 public:
     explicit ItemCodeDialog(QSqlDatabase* database, QWidget *parent = 0);
+
+    ~ItemCodeDialog();
+
+private:
+    //models
     void initializeModels();
     void setupModels();
     void setupUnitsComboBoxModel();
-    ~ItemCodeDialog();
+
+
+    //helper
+    bool validateForm();
+    bool addItem();
+private slots:
+    void on_add_pushButton_clicked();
 
 private:
     Ui::ItemCodeDialog *ui;
