@@ -14,11 +14,15 @@ ItemCodeDialog::ItemCodeDialog(QSqlDatabase *database, QWidget *parent) :
 
 void ItemCodeDialog::initializeModels()
 {
+    /// initializes all models
+
     unitsComboBoxModel = new QSqlQueryModel(this);
 }
 
 void ItemCodeDialog::setupModels()
 {
+    /// sets up all models
+
     initializeModels();
     setupUnitsComboBoxModel();
     qDebug() << "setupModels called";
@@ -26,6 +30,8 @@ void ItemCodeDialog::setupModels()
 
 void ItemCodeDialog::setupUnitsComboBoxModel()
 {
+    /// sets up the model for combo box
+
     QSqlQuery q(*db);
     q.prepare("select id,unit from units");
     if(!q.exec()){
@@ -41,6 +47,8 @@ void ItemCodeDialog::setupUnitsComboBoxModel()
 
 bool ItemCodeDialog::validateForm()
 {
+    /// validates the form fields and checks if they are empty
+
     if (ui->itemcode_spinBox->text().isEmpty()
             || ui->itemdescription_plainTextEdit->toPlainText().isEmpty()
             || ui->unit_comboBox->currentText().isEmpty())
@@ -50,6 +58,11 @@ bool ItemCodeDialog::validateForm()
 
 bool ItemCodeDialog::addItem()
 {
+    /// Validates the form and takes care of the query preperation and execution
+    /// to add item to database items table
+
+
+
     //validate form
     if(!validateForm())
         QMessageBox::warning(this,"Fill Form", "Please Fill the form completely.");
@@ -75,6 +88,14 @@ bool ItemCodeDialog::addItem()
     return true;
 }
 
+void ItemCodeDialog::resetForm()
+{
+    /// resets the form fields
+
+    ui->itemcode_spinBox->clear();
+    ui->itemdescription_plainTextEdit->clear();
+}
+
 ItemCodeDialog::~ItemCodeDialog()
 {
     delete ui;
@@ -82,6 +103,9 @@ ItemCodeDialog::~ItemCodeDialog()
 
 void ItemCodeDialog::on_add_pushButton_clicked()
 {
+    /// Adds the item to the database items table
+    /// and resets the form
+
     //confirms from the user
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this,"Are You Sure?",
@@ -92,5 +116,6 @@ void ItemCodeDialog::on_add_pushButton_clicked()
     if (reply == QMessageBox::Yes){
         if(addItem())
             QMessageBox::information(this, "Succesfull", "Item Addd Successfully!");
+            resetForm();
     }
 }
