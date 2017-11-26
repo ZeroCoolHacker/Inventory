@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ItemCodeDialog</class>
+ <widget class="QDialog" name="ItemCodeDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>590</width>
+    <height>270</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">color:tomato; font-size:32px; background-color:lightgray;font-weight:600</string>
+     </property>
+     <property name="text">
+      <string>ITEM CODE</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+         </property>
+         <property name="text">
+          <string>ITEM CODE</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="itemcode_spinBox">
+         <property name="styleSheet">
+          <string notr="true">font-size:16px;color:green;</string>
+         </property>
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="styleSheet">
+          <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+         </property>
+         <property name="text">
+          <string>ITEM DESCRIPTION</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="itemdescription_plainTextEdit">
+         <property name="styleSheet">
+          <string notr="true">font-size:16px;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+         </property>
+         <property name="text">
+          <string>UNIT</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="itemunit_comboBox">
+         <property name="styleSheet">
+          <string notr="true">font-size:16px;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="add_pushButton">
+         <property name="text">
+          <string>ADD</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
