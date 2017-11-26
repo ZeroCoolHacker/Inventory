@@ -12,3 +12,11 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_actionItem_Code_triggered()
+{
+    ItemCodeDialog* itemCodeDialog = new ItemCodeDialog(this);
+    itemCodeDialog->setAttribute(Qt::WA_DeleteOnClose);
+    itemCodeDialog->setModal(true);
+    itemCodeDialog->exec();
+}

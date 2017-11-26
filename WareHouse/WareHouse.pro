@@ -13,8 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    itemcodedialog.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    itemcodedialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    itemcodedialog.ui
