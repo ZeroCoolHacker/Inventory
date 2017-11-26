@@ -6,6 +6,25 @@ ItemCodeDialog::ItemCodeDialog(QWidget *parent) :
     ui(new Ui::ItemCodeDialog)
 {
     ui->setupUi(this);
+
+    //setup models
+    setupModels();
+}
+
+void ItemCodeDialog::initializeModels()
+{
+    unitsComboBoxModel = new QStringListModel(this);
+}
+
+void ItemCodeDialog::setupModels()
+{
+    initializeModels();
+    setupUnitsComboBoxModel();
+}
+
+void ItemCodeDialog::setupUnitsComboBoxModel()
+{
+
 }
 
 ItemCodeDialog::~ItemCodeDialog()
