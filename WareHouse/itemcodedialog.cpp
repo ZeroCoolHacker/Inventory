@@ -120,8 +120,9 @@ void ItemCodeDialog::on_add_pushButton_clicked()
                                   QMessageBox::Yes | QMessageBox::Cancel);
     //if the user accepts the dialog
     if (reply == QMessageBox::Yes){
-        if(addItem())
+        if(addItem()){
             QMessageBox::information(this, "Succesfull", "Item Addd Successfully!");
             resetForm();
+        }
     }
 }
