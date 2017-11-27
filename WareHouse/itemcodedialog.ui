@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>635</width>
-    <height>312</height>
+    <width>592</width>
+    <height>234</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,6 +40,9 @@ font-weight:600;</string>
            </property>
            <property name="text">
             <string>ITEM CODE</string>
+           </property>
+           <property name="buddy">
+            <cstring>itemcode_spinBox</cstring>
            </property>
           </widget>
          </item>
@@ -81,12 +84,18 @@ font-weight:600;</string>
            <property name="text">
             <string>ITEM DESCRIPTION</string>
            </property>
+           <property name="buddy">
+            <cstring>itemdescription_plainTextEdit</cstring>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QPlainTextEdit" name="itemdescription_plainTextEdit">
            <property name="styleSheet">
             <string notr="true">font-size:16px;</string>
+           </property>
+           <property name="tabChangesFocus">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -104,6 +113,9 @@ font-weight:600;</string>
            </property>
            <property name="text">
             <string>Stock</string>
+           </property>
+           <property name="buddy">
+            <cstring>stock_doubleSpinBox</cstring>
            </property>
           </widget>
          </item>
@@ -127,6 +139,9 @@ font-weight:600;</string>
            </property>
            <property name="text">
             <string>UNIT</string>
+           </property>
+           <property name="buddy">
+            <cstring>unit_comboBox</cstring>
            </property>
           </widget>
          </item>
@@ -168,6 +183,13 @@ font-weight:600;</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>itemcode_spinBox</tabstop>
+  <tabstop>itemdescription_plainTextEdit</tabstop>
+  <tabstop>stock_doubleSpinBox</tabstop>
+  <tabstop>unit_comboBox</tabstop>
+  <tabstop>add_pushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
