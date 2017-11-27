@@ -59,16 +59,8 @@ bool ItemCodeDialog::validateForm()
 
 bool ItemCodeDialog::addItem()
 {
-    /// Validates the form and takes care of the query preperation and execution
+    /// takes care of the query preperation and execution
     /// to add item to database items table
-
-
-
-    //validate form
-    if(!validateForm()){
-        QMessageBox::warning(this,"Fill Form", "Please Fill the form completely.");
-        return false;
-    }
 
     //gather arguments
     qint64  item_code    = ui->itemcode_spinBox->value();
@@ -111,8 +103,14 @@ ItemCodeDialog::~ItemCodeDialog()
 
 void ItemCodeDialog::on_add_pushButton_clicked()
 {
+    //// Validates the form
     /// Adds the item to the database items table
     /// and resets the form
+    //validate form
+    if(!validateForm()){
+        QMessageBox::warning(this,"Fill Form", "Please Fill the form completely.");
+        return;
+    }
 
     //confirms from the user
     QMessageBox::StandardButton reply;
