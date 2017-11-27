@@ -52,3 +52,11 @@ void MainWindow::on_actionItem_Code_triggered()
     itemCodeDialog->setModal(true);
     itemCodeDialog->exec();
 }
+
+void MainWindow::on_actionVendor_Code_triggered()
+{
+    VendorCodeDialog* vendorCodeDialog  =   new VendorCodeDialog(&db, this);
+    vendorCodeDialog->setAttribute(Qt::WA_DeleteOnClose);
+    vendorCodeDialog->setModal(true);
+    vendorCodeDialog->exec();
+}
