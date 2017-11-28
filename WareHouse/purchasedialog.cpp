@@ -1,5 +1,6 @@
 #include "purchasedialog.h"
 #include "ui_purchasedialog.h"
+#include <QDate>
 
 PurchaseDialog::PurchaseDialog(QSqlDatabase *database, QWidget *parent) :
     QDialog(parent),
@@ -22,6 +23,8 @@ void PurchaseDialog::setupModels()
     /// setup model related things
 
     setupVendorNameCompleter();
+    //get the current date
+    ui->purchase_dateEdit->setDate(QDate::currentDate());
 }
 
 void PurchaseDialog::setupVendorNameCompleter()
