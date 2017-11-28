@@ -31,6 +31,8 @@ private slots:
 
     void on_actionPurchase_triggered();
 
+    void on_actionSale_Invoice_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
