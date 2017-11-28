@@ -31,10 +31,15 @@ private slots:
 
     void on_rateperunit_doubleSpinBox_valueChanged(double arg1);
 
+    void on_sell_pushButton_clicked();
+
 private:
-    void initializeModels();
     void setupModels();
     void loadInvoiceNumber();
+
+    // for submission
+    bool validateForm();
+    bool processSale();
 
 private:
     Ui::SalesDialog *ui;

@@ -16,10 +16,6 @@ SalesDialog::~SalesDialog()
     delete ui;
 }
 
-void SalesDialog::initializeModels()
-{
-
-}
 
 void SalesDialog::setupModels()
 {
@@ -54,6 +50,76 @@ void SalesDialog::loadInvoiceNumber()
         ui->invoiceno_spinBox_2->setValue(invoice_number+1);//display incremented one
     }
 }
+
+bool SalesDialog::validateForm()
+{
+    if (ui->itemcode_spinBox->text().isEmpty()
+            || ui->sales_dateEdit->text().isEmpty()
+            || ui->buyername_lineEdit->text().isEmpty()
+            || ui->invoiceno_spinBox_2->text().isEmpty()
+            || ui->quantity_doubleSpinBox->text().isEmpty()
+            || ui->rateperunit_doubleSpinBox->text().isEmpty()
+            || ui->amountpaid_spinBox_3->text().isEmpty()
+            || ui->totalamounttobepaid_spinBox_2->text().isEmpty())
+        return false;
+    return true;
+}
+
+bool SalesDialog::processSale()
+{
+    /// save the invoice in sales_invoice
+    /// update the item stock
+
+    // gat the resources
+    QString invoice = ui->invoiceno_spinBox_2->text();
+    QString date    = ui->sales_dateEdit->date().toString("yyyy-mm-dd");
+    QString buyer   = ui->buyername_lineEdit->text();
+    qint64 item_code = ui->itemcode_spinBox->value();
+    qreal quantity   = ui->quantity_doubleSpinBox->value();
+    qreal rate_per_item = ui->rateperunit_doubleSpinBox->value();
+    qint64 amount_paid = ui->amountpaid_spinBox_3->value();
+
+    // prepare the query
+    db->transaction(); /// start the transaction
+    QSqlQuery q(*db);
+
+    q.prepare("INSERT INTO sales_invoice"
+              "(invoice_no,date,buyer_name,item_code,quantity,rate_per_unit,amount_paid)"
+              " VALUES (:invoice, :date, :buyer, :item, :quantity, :rate, :amount);");
+
+    q.bindValue(":invoice", invoice);
+    q.bindValue(":date", date);
+    q.bindValue(":buyer", buyer);
+    q.bindValue(":item", item_code);
+    q.bindValue(":quantity", quantity);
+    q.bindValue(":rate", rate_per_item);
+    q.bindValue(":amount", amount_paid);
+
+    //execute the query
+    if(!q.exec()){//if the query has some error then return
+        QMessageBox::critical(this, "Error", q.lastError().text()
+                              + "\n" + q.lastQuery());
+        db->rollback();///rollback
+        return false;
+    }
+
+    // successfully executed
+    // update the stock of that item
+    q.prepare("update items set quantity=quantity-? where item_code=?");
+    q.bindValue(0, quantity);
+    q.bindValue(1, item_code);
+    if(!q.exec()){//if the query has some error then return
+        QMessageBox::critical(this, "Error", q.lastError().text()
+                              + "\n" + q.lastQuery());
+        db->rollback();///rollback
+        return false;
+    }
+    // updated the item successfully
+    // so commit the database and return true
+    db->commit();/// commit
+    return true;
+}
+
 
 void SalesDialog::on_itemcode_spinBox_editingFinished()
 {
@@ -105,4 +171,29 @@ void SalesDialog::on_rateperunit_doubleSpinBox_valueChanged(double value)
 {
     qint64 total = value * ui->quantity_doubleSpinBox->value();
     ui->totalamounttobepaid_spinBox_2->setValue(total);
+}
+
+void SalesDialog::on_sell_pushButton_clicked()
+{
+    /// makes the sale
+    /// stores the invoice details in the sales_invoice table
+    /// updates the stock of the item
+    if(!validateForm()){
+        QMessageBox::warning(this,"Fill Form", "Please Fill the form completely.");
+        return;
+    }
+
+    //confirms from the user
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this,"Are You Sure?",
+                                  "You can not undo the entry."
+                                  "Do you want to continue?",
+                                  QMessageBox::Yes | QMessageBox::Cancel);
+    //if the user accepts the dialog
+    if (reply == QMessageBox::Yes){
+        if(processSale()){ // if the query is successfull
+            QMessageBox::information(this, "Succesfull", "Congratulations on your Sale!");
+            this->accept();
+        }
+    }
 }

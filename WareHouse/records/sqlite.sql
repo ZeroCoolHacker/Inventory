@@ -8,10 +8,10 @@ CREATE TABLE `units` (
 	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`unit`	TEXT NOT NULL UNIQUE
 );
-CREATE TABLE `sales_invoice` (
+CREATE TABLE "sales_invoice" (
 	`invoice_no`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`date`	TEXT NOT NULL,
-	`buyer_code`	INTEGER NOT NULL,
+	`buyer_name`	TEXT NOT NULL,
 	`item_code`	INTEGER NOT NULL,
 	`quantity`	REAL NOT NULL,
 	`rate_per_unit`	INTEGER,
