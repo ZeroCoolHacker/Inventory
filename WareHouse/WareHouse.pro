@@ -15,12 +15,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     itemcodedialog.cpp \
-    vendorcodedialog.cpp
+    vendorcodedialog.cpp \
+    purchasedialog.cpp
 
 HEADERS  += mainwindow.h \
     itemcodedialog.h \
-    vendorcodedialog.h
+    vendorcodedialog.h \
+    purchasedialog.h
 
 FORMS    += mainwindow.ui \
     itemcodedialog.ui \
-    vendorcodedialog.ui
+    vendorcodedialog.ui \
+    purchasedialog.ui

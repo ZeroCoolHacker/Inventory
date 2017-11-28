@@ -60,3 +60,11 @@ void MainWindow::on_actionVendor_Code_triggered()
     vendorCodeDialog->setModal(true);
     vendorCodeDialog->exec();
 }
+
+void MainWindow::on_actionPurchase_triggered()
+{
+    PurchaseDialog* purchaseDialog  =   new PurchaseDialog(&db, this);
+    purchaseDialog->setAttribute(Qt::WA_DeleteOnClose);
+    purchaseDialog->setModal(true);
+    purchaseDialog->exec();
+}

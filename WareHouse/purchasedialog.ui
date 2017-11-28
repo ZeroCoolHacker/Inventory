@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PurchaseDialog</class>
+ <widget class="QDialog" name="PurchaseDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>697</width>
+    <height>437</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PURCHASE/INVOICE</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">color:tomato; font-size:32px; background-color:lightgray;font-weight:600;</string>
+     </property>
+     <property name="text">
+      <string>PURCHASE/RECIEPT</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_13">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_12">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_11">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="styleSheet">
+                <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+               </property>
+               <property name="text">
+                <string>ITEM CODE</string>
+               </property>
+               <property name="buddy">
+                <cstring>itemcode_spinBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="itemcode_spinBox">
+               <property name="styleSheet">
+                <string notr="true">font-size:16px;color:green;</string>
+               </property>
+               <property name="maximum">
+                <number>999999999</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="styleSheet">
+                <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+               </property>
+               <property name="text">
+                <string>DATE</string>
+               </property>
+               <property name="buddy">
+                <cstring>itemcode_spinBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="purchase_dateEdit">
+               <property name="styleSheet">
+                <string notr="true">font-size:16px;color:green;</string>
+               </property>
+               <property name="displayFormat">
+                <string>dd/MM/yy</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="styleSheet">
+                <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+               </property>
+               <property name="text">
+                <string>VENDOR</string>
+               </property>
+               <property name="buddy">
+                <cstring>itemcode_spinBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="vendorname_lineEdit">
+               <property name="styleSheet">
+                <string notr="true">font-size:16px;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="styleSheet">
+                <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+               </property>
+               <property name="text">
+                <string>INVOICE NO</string>
+               </property>
+               <property name="buddy">
+                <cstring>itemcode_spinBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="invoiceno_spinBox_2">
+               <property name="styleSheet">
+                <string notr="true">font-size:16px;color:green;</string>
+               </property>
+               <property name="maximum">
+                <number>999999999</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="styleSheet">
+                <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+               </property>
+               <property name="text">
+                <string>ITEM DESCRIPTION</string>
+               </property>
+               <property name="buddy">
+                <cstring>itemcode_spinBox</cstring>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPlainTextEdit" name="itemdescription_plainTextEdit">
+               <property name="styleSheet">
+                <string notr="true">font-size:16px;</string>
+               </property>
+               <property name="tabChangesFocus">
+                <bool>true</bool>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_10">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_7">
+               <item>
+                <widget class="QLabel" name="label_7">
+                 <property name="styleSheet">
+                  <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+                 </property>
+                 <property name="text">
+                  <string>QUANTITY</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>itemcode_spinBox</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="quantity_doubleSpinBox">
+                 <property name="styleSheet">
+                  <string notr="true">font-size:18px;color:green;</string>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="maximum">
+                  <double>999999999999999983222784.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_8">
+               <item>
+                <widget class="QLabel" name="label_8">
+                 <property name="styleSheet">
+                  <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+                 </property>
+                 <property name="text">
+                  <string>RATE PER UNIT</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>itemcode_spinBox</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="rateperunit_doubleSpinBox">
+                 <property name="styleSheet">
+                  <string notr="true">font-size:18px;color:green;</string>
+                 </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
+                 <property name="maximum">
+                  <double>9999999999999999583119736832.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <item>
+                <widget class="QLabel" name="label_9">
+                 <property name="styleSheet">
+                  <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+                 </property>
+                 <property name="text">
+                  <string>AMOUNT PAID</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>itemcode_spinBox</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="amountpaid_spinBox_3">
+                 <property name="styleSheet">
+                  <string notr="true">font-size:18px;color:green;</string>
+                 </property>
+                 <property name="maximum">
+                  <number>999999999</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="styleSheet">
+            <string notr="true">color:dodgerblue; 
+font-size:20px;
+ background-color:lightgray;
+font-weight:700;</string>
+           </property>
+           <property name="text">
+            <string>TOTAL AMOUNT TO BE PAID</string>
+           </property>
+           <property name="buddy">
+            <cstring>itemcode_spinBox</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="totalamounttobepaid_spinBox_2">
+           <property name="styleSheet">
+            <string notr="true">font-size:22px;color:tomato;font-weight:600;</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="purchase_pushButton">
+       <property name="styleSheet">
+        <string notr="true">font-size:18px;
+font-weight: 500px;
+</string>
+       </property>
+       <property name="text">
+        <string>PURCHASE</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>itemcode_spinBox</tabstop>
+  <tabstop>purchase_dateEdit</tabstop>
+  <tabstop>vendorname_lineEdit</tabstop>
+  <tabstop>invoiceno_spinBox_2</tabstop>
+  <tabstop>quantity_doubleSpinBox</tabstop>
+  <tabstop>rateperunit_doubleSpinBox</tabstop>
+  <tabstop>amountpaid_spinBox_3</tabstop>
+  <tabstop>purchase_pushButton</tabstop>
+  <tabstop>totalamounttobepaid_spinBox_2</tabstop>
+  <tabstop>itemdescription_plainTextEdit</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

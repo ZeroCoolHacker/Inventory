@@ -5,6 +5,8 @@
 #include <QSqlDatabase>
 #include "itemcodedialog.h"
 #include "vendorcodedialog.h"
+#include "purchasedialog.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +28,8 @@ private slots:
     void on_actionItem_Code_triggered();
 
     void on_actionVendor_Code_triggered();
+
+    void on_actionPurchase_triggered();
 
 private:
     Ui::MainWindow *ui;
