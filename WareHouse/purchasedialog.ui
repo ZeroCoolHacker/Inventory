@@ -341,6 +341,18 @@ font-weight: 500px;
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>itemcode_spinBox</tabstop>
+  <tabstop>purchase_dateEdit</tabstop>
+  <tabstop>vendorname_lineEdit</tabstop>
+  <tabstop>invoiceno_spinBox_2</tabstop>
+  <tabstop>quantity_doubleSpinBox</tabstop>
+  <tabstop>rateperunit_doubleSpinBox</tabstop>
+  <tabstop>amountpaid_spinBox_3</tabstop>
+  <tabstop>purchase_pushButton</tabstop>
+  <tabstop>totalamounttobepaid_spinBox_2</tabstop>
+  <tabstop>itemdescription_plainTextEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
