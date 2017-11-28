@@ -72,7 +72,7 @@ bool SalesDialog::processSale()
 
     // gat the resources
     QString invoice = ui->invoiceno_spinBox_2->text();
-    QString date    = ui->sales_dateEdit->date().toString("yyyy-mm-dd");
+    QString date    = ui->sales_dateEdit->date().toString("yyyy-MM-dd");
     QString buyer   = ui->buyername_lineEdit->text();
     qint64 item_code = ui->itemcode_spinBox->value();
     qreal quantity   = ui->quantity_doubleSpinBox->value();

@@ -88,7 +88,7 @@ bool PurchaseDialog::processPurchase()
 
     // gat the resources
     QString invoice = ui->invoiceno_spinBox_2->text();
-    QString date    = ui->purchase_dateEdit->date().toString("dd-mm-yyyy");
+    QString date    = ui->purchase_dateEdit->date().toString("yyyy-MM-dd");
                         //vendor code is in the private variable
     qint64 item_code = ui->itemcode_spinBox->value();
     qreal quantity   = ui->quantity_doubleSpinBox->value();
