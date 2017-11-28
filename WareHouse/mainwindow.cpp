@@ -5,6 +5,7 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QDebug>
+#include "salesdialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -67,4 +68,12 @@ void MainWindow::on_actionPurchase_triggered()
     purchaseDialog->setAttribute(Qt::WA_DeleteOnClose);
     purchaseDialog->setModal(true);
     purchaseDialog->exec();
+}
+
+void MainWindow::on_actionSale_Invoice_triggered()
+{
+    SalesDialog* salesDialog  =   new SalesDialog(&db, this);
+    salesDialog->setAttribute(Qt::WA_DeleteOnClose);
+    salesDialog->setModal(true);
+    salesDialog->exec();
 }
