@@ -94,3 +94,15 @@ void SalesDialog::on_itemcode_spinBox_editingFinished()
         ui->itemcode_spinBox->setFocus();
     }
 }
+
+void SalesDialog::on_quantity_doubleSpinBox_valueChanged(double value)
+{
+    qint64 total = value * ui->rateperunit_doubleSpinBox->value();
+    ui->totalamounttobepaid_spinBox_2->setValue(total);
+}
+
+void SalesDialog::on_rateperunit_doubleSpinBox_valueChanged(double value)
+{
+    qint64 total = value * ui->quantity_doubleSpinBox->value();
+    ui->totalamounttobepaid_spinBox_2->setValue(total);
+}

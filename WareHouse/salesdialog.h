@@ -27,6 +27,10 @@ public:
 private slots:
     void on_itemcode_spinBox_editingFinished();
 
+    void on_quantity_doubleSpinBox_valueChanged(double arg1);
+
+    void on_rateperunit_doubleSpinBox_valueChanged(double arg1);
+
 private:
     void initializeModels();
     void setupModels();
