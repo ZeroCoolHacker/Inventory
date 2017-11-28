@@ -53,6 +53,8 @@ void PurchaseDialog::loadInvoiceNumber()
     if(!q.exec()){
         QMessageBox::critical(this, "Invoice", q.lastError().text()
                               + "\n" + q.lastQuery());
+        //set 1 as the invoice number
+        ui->invoiceno_spinBox_2->setValue(1);
         return;
     }
 
