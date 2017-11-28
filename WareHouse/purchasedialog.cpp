@@ -53,6 +53,8 @@ void PurchaseDialog::loadInvoiceNumber()
     if(!q.exec()){
         QMessageBox::critical(this, "Invoice", q.lastError().text()
                               + "\n" + q.lastQuery());
+        //set 1 as the invoice number
+        ui->invoiceno_spinBox_2->setValue(1);
         return;
     }
 
@@ -86,7 +88,7 @@ bool PurchaseDialog::processPurchase()
 
     // gat the resources
     QString invoice = ui->invoiceno_spinBox_2->text();
-    QString date    = ui->purchase_dateEdit->date().toString("dd-mm-yyyy");
+    QString date    = ui->purchase_dateEdit->date().toString("yyyy-MM-dd");
                         //vendor code is in the private variable
     qint64 item_code = ui->itemcode_spinBox->value();
     qreal quantity   = ui->quantity_doubleSpinBox->value();
