@@ -29,11 +29,16 @@ private:
     void initializeModels();
     void setupModels();
     void setupVendorNameCompleter();
+    void loadInvoiceNumber();
 
 private slots:
     void on_itemcode_spinBox_editingFinished();
 
     void on_vendorname_lineEdit_editingFinished();
+
+    void on_quantity_doubleSpinBox_valueChanged(double value);
+
+    void on_rateperunit_doubleSpinBox_valueChanged(double value);
 
 private:
     Ui::PurchaseDialog *ui;

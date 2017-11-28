@@ -39,6 +39,12 @@ void PurchaseDialog::setupVendorNameCompleter()
     ui->vendorname_lineEdit->setCompleter(vendor_name_completer);
 }
 
+void PurchaseDialog::loadInvoiceNumber()
+{
+    /// loads a new invoice number based on the most recent invoice number
+    ///will be implemented after the database is created
+}
+
 
 
 void PurchaseDialog::on_itemcode_spinBox_editingFinished()
@@ -91,7 +97,7 @@ void PurchaseDialog::on_vendorname_lineEdit_editingFinished()
 
     //prepare the query
     QSqlQuery q(*db);
-    q.prepare("select vendor_code, name from vendors where name=?");
+    q.prepare("select vendor_code, name, address from vendors where name=?");
     q.bindValue(0, vendor);
 
     //execute the query
@@ -116,4 +122,16 @@ void PurchaseDialog::on_vendorname_lineEdit_editingFinished()
         ui->vendorname_lineEdit->setStyleSheet(wrong_style);
         ui->vendorname_lineEdit->setFocus();
     }
+}
+
+void PurchaseDialog::on_quantity_doubleSpinBox_valueChanged(double value)
+{
+    qint64 total = value * ui->rateperunit_doubleSpinBox->value();
+    ui->totalamounttobepaid_spinBox_2->setValue(total);
+}
+
+void PurchaseDialog::on_rateperunit_doubleSpinBox_valueChanged(double value)
+{
+    qint64 total = value * ui->quantity_doubleSpinBox->value();
+    ui->totalamounttobepaid_spinBox_2->setValue(total);
 }

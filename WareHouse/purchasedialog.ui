@@ -211,6 +211,9 @@ font-weight:600;</string>
                  <property name="styleSheet">
                   <string notr="true">font-size:18px;color:green;</string>
                  </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
                  <property name="maximum">
                   <double>999999999999999983222784.000000000000000</double>
                  </property>
@@ -237,12 +240,15 @@ font-weight:600;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QSpinBox" name="rate_spinBox_2">
+                <widget class="QDoubleSpinBox" name="rateperunit_doubleSpinBox">
                  <property name="styleSheet">
                   <string notr="true">font-size:18px;color:green;</string>
                  </property>
+                 <property name="decimals">
+                  <number>3</number>
+                 </property>
                  <property name="maximum">
-                  <number>999999999</number>
+                  <double>9999999999999999583119736832.000000000000000</double>
                  </property>
                 </widget>
                </item>
