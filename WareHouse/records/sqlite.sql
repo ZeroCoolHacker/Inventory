@@ -8,6 +8,17 @@ CREATE TABLE `units` (
 	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`unit`	TEXT NOT NULL UNIQUE
 );
+INSERT INTO `units` (id,unit) VALUES (1,'KG'),
+ (2,'Number');
+CREATE TABLE `purchase_invoice` (
+	`invoice_no`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`date`	TEXT NOT NULL,
+	`vendor_code`	INTEGER NOT NULL,
+	`item_code`	INTEGER NOT NULL,
+	`quantity`	REAL NOT NULL,
+	`rate_per_unit`	INTEGER,
+	`amount_paid`	INTEGER NOT NULL
+);
 CREATE TABLE "items" (
 	`item_code`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`item_description`	TEXT,
