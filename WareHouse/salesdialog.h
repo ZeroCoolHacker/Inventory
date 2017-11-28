@@ -24,6 +24,9 @@ public:
     explicit SalesDialog(QSqlDatabase *database,QWidget *parent = 0);
     ~SalesDialog();
 
+private slots:
+    void on_itemcode_spinBox_editingFinished();
+
 private:
     void initializeModels();
     void setupModels();
