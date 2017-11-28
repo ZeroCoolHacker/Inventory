@@ -31,6 +31,9 @@ private:
     void setupVendorNameCompleter();
     void loadInvoiceNumber();
 
+    // for submission
+    bool validateForm();
+    bool processPurchase();
 private slots:
     void on_itemcode_spinBox_editingFinished();
 
@@ -39,6 +42,10 @@ private slots:
     void on_quantity_doubleSpinBox_valueChanged(double value);
 
     void on_rateperunit_doubleSpinBox_valueChanged(double value);
+
+    void on_purchase_pushButton_clicked();
+
+    void on_invoiceno_spinBox_2_editingFinished();
 
 private:
     Ui::PurchaseDialog *ui;
