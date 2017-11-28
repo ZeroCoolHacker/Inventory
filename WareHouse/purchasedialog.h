@@ -33,11 +33,16 @@ private:
 private slots:
     void on_itemcode_spinBox_editingFinished();
 
+    void on_vendorname_lineEdit_editingFinished();
+
 private:
     Ui::PurchaseDialog *ui;
     QSqlDatabase *db;
 
     QSqlQueryModel* vendor_name_model = new QSqlQueryModel(this);
+
+    // query related
+    QString vendor_code; // stores the vendor_code for the selected vendor
 };
 
 #endif // PURCHASEDIALOG_H

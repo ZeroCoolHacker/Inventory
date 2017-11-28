@@ -29,9 +29,9 @@ void PurchaseDialog::setupVendorNameCompleter()
     /// implements the auto completion for itemcode_spinbox
 
     //prepare the model
-    vendor_name_model->setQuery("select vendor_code, name from vendors");
+    vendor_name_model->setQuery("select name from vendors");
     auto vendor_name_completer = new QCompleter(vendor_name_model, this);
-    vendor_name_completer->setCompletionColumn(1);
+    vendor_name_completer->setCompletionColumn(0);
     vendor_name_completer->setCaseSensitivity(Qt::CaseInsensitive);
     vendor_name_completer->setCompletionMode(QCompleter::PopupCompletion);
 
@@ -78,5 +78,42 @@ void PurchaseDialog::on_itemcode_spinBox_editingFinished()
         QString wrong_style = "font-size:16px;color:red;";
         ui->itemcode_spinBox->setStyleSheet(wrong_style);
         ui->itemcode_spinBox->setFocus();
+    }
+}
+
+void PurchaseDialog::on_vendorname_lineEdit_editingFinished()
+{
+    /// Searches the database for that vendor
+    /// if it is present, load its description
+    /// otherwise make this field red indicating a new item
+    // get the itemcode
+    QString vendor    = ui->vendorname_lineEdit->text();
+
+    //prepare the query
+    QSqlQuery q(*db);
+    q.prepare("select vendor_code, name from vendors where name=?");
+    q.bindValue(0, vendor);
+
+    //execute the query
+    if(!q.exec()){//if the query has some error then return
+        QMessageBox::critical(this, "Error", q.lastError().text()
+                              + "\n" + q.lastQuery());
+        return;
+    }
+
+    // if the query executes
+    // check for the result
+    if (q.next()){//if the result exists then
+        //set the right style sheet
+        QString right_style = "font-size:16px;color:green;";
+        ui->vendorname_lineEdit->setStyleSheet(right_style);
+        // save the vendor_code
+        qint8 index = q.record().indexOf("vendor_code");
+        vendor_code = q.value(index).toString();
+    } else {
+        //if the name doesn't exist then change the color of widget,and focus on it
+        QString wrong_style = "font-size:16px;color:red;";
+        ui->vendorname_lineEdit->setStyleSheet(wrong_style);
+        ui->vendorname_lineEdit->setFocus();
     }
 }
