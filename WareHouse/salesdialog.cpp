@@ -27,6 +27,8 @@ void SalesDialog::setupModels()
     /// load other things at startup
 
     loadInvoiceNumber();//display the most recent invoice
+    //set date
+    ui->sales_dateEdit->setDate(QDate::currentDate());
 }
 
 
