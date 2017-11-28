@@ -4,11 +4,13 @@
 #include <QDialog>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QSqlQueryModel>
 #include <QSqlRecord>
 #include <QSqlError>
 #include <QString>
 #include <QSqlQueryModel>
 #include <QMessageBox>
+#include <QCompleter>
 
 namespace Ui {
 class PurchaseDialog;
@@ -24,7 +26,9 @@ public:
 
 
 private:
-
+    void initializeModels();
+    void setupModels();
+    void setupVendorNameCompleter();
 
 private slots:
     void on_itemcode_spinBox_editingFinished();
@@ -32,6 +36,8 @@ private slots:
 private:
     Ui::PurchaseDialog *ui;
     QSqlDatabase *db;
+
+    QSqlQueryModel* vendor_name_model = new QSqlQueryModel(this);
 };
 
 #endif // PURCHASEDIALOG_H

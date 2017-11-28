@@ -7,6 +7,8 @@ PurchaseDialog::PurchaseDialog(QSqlDatabase *database, QWidget *parent) :
 {
     ui->setupUi(this);
     db = database;
+    // setup the models
+    setupModels();
 }
 
 
@@ -14,6 +16,29 @@ PurchaseDialog::~PurchaseDialog()
 {
     delete ui;
 }
+
+void PurchaseDialog::setupModels()
+{
+    /// setup model related things
+
+    setupVendorNameCompleter();
+}
+
+void PurchaseDialog::setupVendorNameCompleter()
+{
+    /// implements the auto completion for itemcode_spinbox
+
+    //prepare the model
+    vendor_name_model->setQuery("select vendor_code, name from vendors");
+    auto vendor_name_completer = new QCompleter(vendor_name_model, this);
+    vendor_name_completer->setCompletionColumn(1);
+    vendor_name_completer->setCaseSensitivity(Qt::CaseInsensitive);
+    vendor_name_completer->setCompletionMode(QCompleter::PopupCompletion);
+
+    // set the model onto the item_code_spinbox
+    ui->vendorname_lineEdit->setCompleter(vendor_name_completer);
+}
+
 
 
 void PurchaseDialog::on_itemcode_spinBox_editingFinished()
