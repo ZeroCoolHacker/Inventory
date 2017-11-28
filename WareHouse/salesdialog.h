@@ -44,6 +44,7 @@ private:
 private:
     Ui::SalesDialog *ui;
     QSqlDatabase *db;
+
 };
 
 #endif // SALESDIALOG_H

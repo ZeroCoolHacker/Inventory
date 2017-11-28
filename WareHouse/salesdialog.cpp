@@ -132,7 +132,7 @@ void SalesDialog::on_itemcode_spinBox_editingFinished()
 
     //prepare the query
     QSqlQuery q(*db);
-    q.prepare("select item_code,item_description from items where item_code=?");
+    q.prepare("select item_code,item_description,quantity from items where item_code=?");
     q.bindValue(0, item_code);
 
     //execute the query
@@ -148,8 +148,11 @@ void SalesDialog::on_itemcode_spinBox_editingFinished()
         //set the right style sheet
         QString right_style = "font-size:16px;color:green;";
         ui->itemcode_spinBox->setStyleSheet(right_style);
-        //get the description
+        //get the description and quantity
         qint8 description_field = q.record().indexOf("item_description");
+        qint8 quantity_field    = q.record().indexOf("quantity");
+        qreal stock             = q.value(quantity_field).toReal();
+        ui->quantity_doubleSpinBox->setMaximum(stock);
         QString description     = q.value(description_field).toString();
         //write the description into widget
         ui->itemdescription_plainTextEdit->setPlainText(description);
