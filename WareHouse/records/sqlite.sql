@@ -11,20 +11,20 @@ CREATE TABLE `units` (
 CREATE TABLE "sales_invoice" (
 	`invoice_no`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`date`	TEXT NOT NULL,
-	`buyer_name`	TEXT NOT NULL,
+	`vendor_code`	INTEGER NOT NULL,
 	`item_code`	INTEGER NOT NULL,
 	`quantity`	REAL NOT NULL,
-	`rate_per_unit`	INTEGER,
+	`rate_per_unit`	REAL NOT NULL,
 	`amount_paid`	INTEGER NOT NULL
 );
-CREATE TABLE `purchase_invoice` (
+CREATE TABLE "purchase_invoice" (
 	`invoice_no`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
 	`date`	TEXT NOT NULL,
 	`vendor_code`	INTEGER NOT NULL,
 	`item_code`	INTEGER NOT NULL,
 	`quantity`	REAL NOT NULL,
-	`rate_per_unit`	INTEGER,
-	`amount_paid`	INTEGER NOT NULL
+	`rate_per_unit`	REAL NOT NULL,
+	`amount_paid`	REAL NOT NULL
 );
 CREATE TABLE "items" (
 	`item_code`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
