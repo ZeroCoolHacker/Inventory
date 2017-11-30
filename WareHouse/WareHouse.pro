@@ -17,16 +17,19 @@ SOURCES += main.cpp\
     itemcodedialog.cpp \
     vendorcodedialog.cpp \
     purchasedialog.cpp \
-    salesdialog.cpp
+    salesdialog.cpp \
+    reportsdialog.cpp
 
 HEADERS  += mainwindow.h \
     itemcodedialog.h \
     vendorcodedialog.h \
     purchasedialog.h \
-    salesdialog.h
+    salesdialog.h \
+    reportsdialog.h
 
 FORMS    += mainwindow.ui \
     itemcodedialog.ui \
     vendorcodedialog.ui \
     purchasedialog.ui \
-    salesdialog.ui
+    salesdialog.ui \
+    reportsdialog.ui
