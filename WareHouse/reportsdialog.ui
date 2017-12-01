@@ -15,7 +15,21 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QTableView" name="report_tableView"/>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="title_label">
+       <property name="styleSheet">
+        <string notr="true">color:tomato; font-size:32px; background-color:lightgray;font-weight:600</string>
+       </property>
+       <property name="text">
+        <string>REPORTS</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableView" name="report_tableView"/>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

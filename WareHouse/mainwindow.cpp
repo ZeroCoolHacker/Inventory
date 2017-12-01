@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include <QDebug>
 #include "salesdialog.h"
+#include "reportsdialog.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,6 +25,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::setupDatabase()
 {
+    /// searches for the database file
+    /// if it finds it then connect to it
+    /// otherwise open a file dialog and ask the user to locate the file
     db = QSqlDatabase::addDatabase("QSQLITE");
     QString path = qApp->applicationDirPath()+"/records/data.db";
     QFile dbFile(path);
@@ -76,4 +81,12 @@ void MainWindow::on_actionSale_Invoice_triggered()
     salesDialog->setAttribute(Qt::WA_DeleteOnClose);
     salesDialog->setModal(true);
     salesDialog->exec();
+}
+
+void MainWindow::on_actionVendor_Wise_triggered()
+{
+    ReportsDialog *report   =   new ReportsDialog(this);
+    report->setAttribute(Qt::WA_DeleteOnClose);
+    report->setModal(true);
+    report->exec();
 }

@@ -33,6 +33,8 @@ private slots:
 
     void on_actionSale_Invoice_triggered();
 
+    void on_actionVendor_Wise_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
