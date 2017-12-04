@@ -65,8 +65,8 @@
       <string>Purchase</string>
      </property>
      <addaction name="actionDate_Wise"/>
-     <addaction name="actionVendor_Wise_2"/>
-     <addaction name="actionItem_Wise_2"/>
+     <addaction name="actionPVendor_Wise"/>
+     <addaction name="actionPItem_Wise"/>
     </widget>
     <addaction name="menuSales"/>
     <addaction name="menuPurchase"/>
@@ -118,12 +118,12 @@
     <string>Date Wise</string>
    </property>
   </action>
-  <action name="actionVendor_Wise_2">
+  <action name="actionPVendor_Wise">
    <property name="text">
     <string>Vendor Wise</string>
    </property>
   </action>
-  <action name="actionItem_Wise_2">
+  <action name="actionPItem_Wise">
    <property name="text">
     <string>Item Wise</string>
    </property>
