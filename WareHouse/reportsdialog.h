@@ -20,6 +20,7 @@ class ReportsDialog : public QDialog
 public:
     explicit ReportsDialog(qint8 reportType, QSqlDatabase* database, QWidget *parent = 0);
 
+    void setDates();
     //model functions
     void setupModel();  //decides which model to display
     void setupSalesVendorWiseModel();
