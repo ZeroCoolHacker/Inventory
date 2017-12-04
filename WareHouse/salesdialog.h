@@ -38,7 +38,7 @@ private slots:
 private:
     void setupModels();
     void loadInvoiceNumber();
-
+    void setupVendorNameCompleter();
     // for submission
     bool validateForm();
     bool processSale();
@@ -47,6 +47,7 @@ private:
     Ui::SalesDialog *ui;
     QSqlDatabase *db;
     QString vendor_code;
+    QSqlQueryModel* vendor_name_model = new QSqlQueryModel(this);
 };
 
 #endif // SALESDIALOG_H

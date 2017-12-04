@@ -23,6 +23,7 @@ void SalesDialog::setupModels()
     /// load other things at startup
 
     loadInvoiceNumber();//display the most recent invoice
+    setupVendorNameCompleter();
     //set date
     ui->sales_dateEdit->setDate(QDate::currentDate());
 }
@@ -49,6 +50,21 @@ void SalesDialog::loadInvoiceNumber()
         qint64 invoice_number = q.value(0).toLongLong();//get the recent one
         ui->invoiceno_spinBox_2->setValue(invoice_number+1);//display incremented one
     }
+}
+
+void SalesDialog::setupVendorNameCompleter()
+{
+    /// implements the auto completion for itemcode_spinbox
+
+    //prepare the model
+    vendor_name_model->setQuery("select name from vendors");
+    auto vendor_name_completer = new QCompleter(vendor_name_model, this);
+    vendor_name_completer->setCompletionColumn(0);
+    vendor_name_completer->setCaseSensitivity(Qt::CaseInsensitive);
+    vendor_name_completer->setCompletionMode(QCompleter::PopupCompletion);
+
+    // set the model onto the item_code_spinbox
+    ui->buyername_lineEdit->setCompleter(vendor_name_completer);
 }
 
 bool SalesDialog::validateForm()
