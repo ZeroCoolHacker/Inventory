@@ -89,7 +89,6 @@ bool SalesDialog::processSale()
     // gat the resources
     QString invoice = ui->invoiceno_spinBox_2->text();
     QString date    = ui->sales_dateEdit->date().toString("yyyy-MM-dd");
-    QString vendor   = ui->buyername_lineEdit->text();
     qint64 item_code = ui->itemcode_spinBox->value();
     qreal quantity   = ui->quantity_doubleSpinBox->value();
     qreal rate_per_item = ui->rateperunit_doubleSpinBox->value();
@@ -105,7 +104,7 @@ bool SalesDialog::processSale()
 
     q.bindValue(":invoice", invoice);
     q.bindValue(":date", date);
-    q.bindValue(":vendor", vendor);
+    q.bindValue(":vendor", vendor_code);
     q.bindValue(":item", item_code);
     q.bindValue(":quantity", quantity);
     q.bindValue(":rate", rate_per_item);
