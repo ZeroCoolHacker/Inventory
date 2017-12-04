@@ -33,6 +33,8 @@ private slots:
 
     void on_sell_pushButton_clicked();
 
+    void on_buyername_lineEdit_editingFinished();
+
 private:
     void setupModels();
     void loadInvoiceNumber();
@@ -44,7 +46,7 @@ private:
 private:
     Ui::SalesDialog *ui;
     QSqlDatabase *db;
-
+    QString vendor_code;
 };
 
 #endif // SALESDIALOG_H
