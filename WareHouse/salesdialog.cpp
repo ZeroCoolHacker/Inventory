@@ -23,6 +23,7 @@ void SalesDialog::setupModels()
     /// load other things at startup
 
     loadInvoiceNumber();//display the most recent invoice
+    setupVendorNameCompleter();
     //set date
     ui->sales_dateEdit->setDate(QDate::currentDate());
 }
@@ -51,6 +52,21 @@ void SalesDialog::loadInvoiceNumber()
     }
 }
 
+void SalesDialog::setupVendorNameCompleter()
+{
+    /// implements the auto completion for itemcode_spinbox
+
+    //prepare the model
+    vendor_name_model->setQuery("select name from vendors");
+    auto vendor_name_completer = new QCompleter(vendor_name_model, this);
+    vendor_name_completer->setCompletionColumn(0);
+    vendor_name_completer->setCaseSensitivity(Qt::CaseInsensitive);
+    vendor_name_completer->setCompletionMode(QCompleter::PopupCompletion);
+
+    // set the model onto the item_code_spinbox
+    ui->buyername_lineEdit->setCompleter(vendor_name_completer);
+}
+
 bool SalesDialog::validateForm()
 {
     if (ui->itemcode_spinBox->text().isEmpty()
@@ -73,7 +89,6 @@ bool SalesDialog::processSale()
     // gat the resources
     QString invoice = ui->invoiceno_spinBox_2->text();
     QString date    = ui->sales_dateEdit->date().toString("yyyy-MM-dd");
-    QString buyer   = ui->buyername_lineEdit->text();
     qint64 item_code = ui->itemcode_spinBox->value();
     qreal quantity   = ui->quantity_doubleSpinBox->value();
     qreal rate_per_item = ui->rateperunit_doubleSpinBox->value();
@@ -84,12 +99,12 @@ bool SalesDialog::processSale()
     QSqlQuery q(*db);
 
     q.prepare("INSERT INTO sales_invoice"
-              "(invoice_no,date,buyer_name,item_code,quantity,rate_per_unit,amount_paid)"
-              " VALUES (:invoice, :date, :buyer, :item, :quantity, :rate, :amount);");
+              "(invoice_no,date,vendor_code,item_code,quantity,rate_per_unit,amount_paid)"
+              " VALUES (:invoice, :date, :vendor, :item, :quantity, :rate, :amount);");
 
     q.bindValue(":invoice", invoice);
     q.bindValue(":date", date);
-    q.bindValue(":buyer", buyer);
+    q.bindValue(":vendor", vendor_code);
     q.bindValue(":item", item_code);
     q.bindValue(":quantity", quantity);
     q.bindValue(":rate", rate_per_item);
@@ -198,5 +213,42 @@ void SalesDialog::on_sell_pushButton_clicked()
             QMessageBox::information(this, "Succesfull", "Congratulations on your Sale!");
             this->accept();
         }
+    }
+}
+
+void SalesDialog::on_buyername_lineEdit_editingFinished()
+{
+    /// Searches the database for that vendor
+    /// if it is present, load its description
+    /// otherwise make this field red indicating a new item
+    // get the itemcode
+    QString vendor    = ui->buyername_lineEdit->text();
+
+    //prepare the query
+    QSqlQuery q(*db);
+    q.prepare("select vendor_code, name, address from vendors where name=?");
+    q.bindValue(0, vendor);
+
+    //execute the query
+    if(!q.exec()){//if the query has some error then return
+        QMessageBox::critical(this, "Error", q.lastError().text()
+                              + "\n" + q.lastQuery());
+        return;
+    }
+
+    // if the query executes
+    // check for the result
+    if (q.next()){//if the result exists then
+        //set the right style sheet
+        QString right_style = "font-size:16px;color:green;";
+        ui->buyername_lineEdit->setStyleSheet(right_style);
+        // save the vendor_code
+        qint8 index = q.record().indexOf("vendor_code");
+        vendor_code = q.value(index).toString();
+    } else {
+        //if the name doesn't exist then change the color of widget,and focus on it
+        QString wrong_style = "font-size:16px;color:red;";
+        ui->buyername_lineEdit->setStyleSheet(wrong_style);
+        ui->buyername_lineEdit->setFocus();
     }
 }
