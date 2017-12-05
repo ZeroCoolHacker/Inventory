@@ -15,21 +15,81 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <widget class="QLabel" name="title_label">
+     <property name="styleSheet">
+      <string notr="true">color:tomato; font-size:32px; background-color:lightgray;font-weight:600</string>
+     </property>
+     <property name="text">
+      <string>REPORTS</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QLabel" name="title_label">
-       <property name="styleSheet">
-        <string notr="true">color:tomato; font-size:32px; background-color:lightgray;font-weight:600</string>
-       </property>
-       <property name="text">
-        <string>REPORTS</string>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="styleSheet">
+          <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+         </property>
+         <property name="text">
+          <string>FROM</string>
+         </property>
+         <property name="buddy">
+          <cstring>itemcode_spinBox</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateEdit" name="from_dateEdit">
+         <property name="styleSheet">
+          <string notr="true">font-size:16px;color:green;</string>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MMM/yyyy</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
-      <widget class="QTableView" name="report_tableView"/>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">color:dodgerblue; 
+font-size:16px;
+ background-color:lightgray;
+font-weight:600;</string>
+         </property>
+         <property name="text">
+          <string>TO</string>
+         </property>
+         <property name="buddy">
+          <cstring>itemcode_spinBox</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateEdit" name="to_dateEdit">
+         <property name="styleSheet">
+          <string notr="true">font-size:16px;color:green;</string>
+         </property>
+         <property name="displayFormat">
+          <string>dd/MMM/yyyy</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
+   </item>
+   <item row="2" column="0">
+    <widget class="QTableView" name="report_tableView"/>
    </item>
   </layout>
  </widget>
