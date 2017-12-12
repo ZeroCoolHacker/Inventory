@@ -83,9 +83,9 @@ void MainWindow::on_actionSale_Invoice_triggered()
     salesDialog->exec();
 }
 
-void MainWindow::on_actionVendor_Wise_triggered()
+void MainWindow::on_actionDate_Wise_triggered()
 {
-    ReportsDialog *report = new ReportsDialog(ReportsDialog::SALES_VENDORWISE,&db,this);
+    ReportsDialog *report = new ReportsDialog(&db,this);
     report->setAttribute(Qt::WA_DeleteOnClose);
     report->setModal(true);
     report->exec();
