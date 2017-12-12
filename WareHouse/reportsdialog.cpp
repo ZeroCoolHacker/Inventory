@@ -21,7 +21,7 @@ void ReportsDialog::setDates()
 void ReportsDialog::setupModel()
 {
     QSqlQuery q(*db);
-    q.prepare("select * from sales_invoice where date>? and date<?");
+    q.prepare("select * from purchase_invoice where date>? and date<?");
     q.bindValue(0, ui->from_dateEdit->date().toString("yyyy-mm-dd"));
     q.bindValue(1, ui->to_dateEdit->date().toString("yyyy-mm-dd"));
     if(!q.exec()){
