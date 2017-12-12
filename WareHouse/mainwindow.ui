@@ -59,6 +59,7 @@
      </property>
      <addaction name="actionVendor_Wise"/>
      <addaction name="actionItem_Wise"/>
+     <addaction name="actionDate_Wise_2"/>
     </widget>
     <widget class="QMenu" name="menuPurchase">
      <property name="title">
@@ -126,6 +127,11 @@
   <action name="actionPItem_Wise">
    <property name="text">
     <string>Item Wise</string>
+   </property>
+  </action>
+  <action name="actionDate_Wise_2">
+   <property name="text">
+    <string>Date Wise</string>
    </property>
   </action>
  </widget>

@@ -18,30 +18,34 @@ class ReportsDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ReportsDialog(ReportType reportType,QSqlDatabase* database, QWidget *parent = 0);
+    explicit ReportsDialog(qint8 type,QSqlDatabase* database, QWidget *parent = 0);
 
     void setDates();
     //model functions
     void setupModel();
+    void setupDateWiseSalesModel();
+    void setupDateWisePurchaseModel();
+
     ~ReportsDialog();
 
-
+    enum ReportType {
+        SALES_VENDORWISE,
+        SALES_ITEMWISE,
+        SALES_DATEWISE,
+        PURCHASE_VENDORWISE,
+        PURCHASE_ITEMWISE,
+        PURCHASE_DATEWISE
+    };
 private slots:
     void on_generate_report_pushbutton_clicked();
 
 private:
     Ui::ReportsDialog *ui;
-    ReportType reportType;
+    qint8 reportType;
     QSqlQueryModel* reportModel = new QSqlQueryModel(this);
     QSqlDatabase* db;
 
-    enum ReportType {
-        SALES_VENDORWISE,
-        SALES_ITEMWISE,
-        PURCHASE_VENDORWISE,
-        PURCHASE_ITEMWISE,
-        PURCHASE_DATEWISE
-    };
+
 };
 
 #endif // REPORTSDIALOG_H

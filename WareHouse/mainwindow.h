@@ -37,6 +37,8 @@ private slots:
 
     void on_actionDate_Wise_triggered();
 
+    void on_actionDate_Wise_2_triggered();
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase db;
