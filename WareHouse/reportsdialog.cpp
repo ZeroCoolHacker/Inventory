@@ -1,12 +1,11 @@
 #include "reportsdialog.h"
 #include "ui_reportsdialog.h"
 
-ReportsDialog::ReportsDialog(qint8 reportType, QSqlDatabase *database, QWidget *parent) :
+ReportsDialog::ReportsDialog(QSqlDatabase *database, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ReportsDialog)
 {
     ui->setupUi(this);
-    report_type = reportType;
     db = database;
 
     setDates();
@@ -21,16 +20,21 @@ void ReportsDialog::setDates()
 
 void ReportsDialog::setupModel()
 {
-    if (report_type == SALES_VENDORWISE){
-        setupSalesVendorWiseModel();
+    QSqlQuery q(*db);
+    q.prepare("select * from sales_invoice where date>? and date<?");
+    q.bindValue(0, ui->from_dateEdit->date().toString("yyyy-mm-dd"));
+    q.bindValue(1, ui->to_dateEdit->date().toString("yyyy-mm-dd"));
+    if(!q.exec()){
+        QMessageBox::warning(this, "Error",
+                             "Could not load reports due to error : "
+                             + q.lastError().text());
+        return;
     }
+    //setup model
+    reportModel->setQuery(q);
+    ui->report_tableView->setModel(reportModel);
 }
 
-void ReportsDialog::setupSalesVendorWiseModel()
-{
-    QSqlQuery q(*db);
-//    q.prepare()
-}
 
 ReportsDialog::~ReportsDialog()
 {
