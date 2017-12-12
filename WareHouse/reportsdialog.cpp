@@ -40,3 +40,8 @@ ReportsDialog::~ReportsDialog()
 {
     delete ui;
 }
+
+void ReportsDialog::on_generate_report_pushbutton_clicked()
+{
+    setupModel();
+}
