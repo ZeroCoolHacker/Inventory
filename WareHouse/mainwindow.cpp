@@ -83,9 +83,28 @@ void MainWindow::on_actionSale_Invoice_triggered()
     salesDialog->exec();
 }
 
+void MainWindow::on_actionDate_Wise_triggered()
+{
+    auto report = new ReportsDialog(ReportsDialog::PURCHASE_DATEWISE,
+                                    &db,this);
+    report->setAttribute(Qt::WA_DeleteOnClose);
+    report->setModal(true);
+    report->exec();
+}
+
 void MainWindow::on_actionVendor_Wise_triggered()
 {
-    ReportsDialog *report = new ReportsDialog(ReportsDialog::SALES_VENDORWISE,&db,this);
+    auto report = new ReportsDialog(ReportsDialog::SALES_VENDORWISE,
+                                    &db,this);
+    report->setAttribute(Qt::WA_DeleteOnClose);
+    report->setModal(true);
+    report->exec();
+}
+
+void MainWindow::on_actionDate_Wise_2_triggered()
+{
+    auto report = new ReportsDialog(ReportsDialog::SALES_DATEWISE,
+                                    &db,this);
     report->setAttribute(Qt::WA_DeleteOnClose);
     report->setModal(true);
     report->exec();
